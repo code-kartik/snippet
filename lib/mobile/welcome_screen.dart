@@ -41,7 +41,7 @@ class WelcomeScreenMobile extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Develop, Share, Connext and much more",
+                  "Develop, Share, Connect and much more",
                   style: GoogleFonts.poppins(
                     fontSize: 11,
                     color: Colors.black87,
