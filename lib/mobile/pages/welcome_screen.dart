@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:snippet/mobile/pages/sign_up_screen.dart';
 
 class WelcomeScreenMobile extends StatelessWidget {
   const WelcomeScreenMobile({super.key});
+
+  static String id = "WelcomeScreenMobile";
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class WelcomeScreenMobile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Column(
-              children: <Text>[
+              children: <Widget>[
                 Text(
                   "Welcome to\nSnippet",
                   style: GoogleFonts.poppins(
@@ -40,10 +42,13 @@ class WelcomeScreenMobile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 Text(
-                  "Develop, Share, Connect and much more",
+                  "Develop, Share, Connect, Collaborate and much more",
                   style: GoogleFonts.poppins(
-                    fontSize: 11,
+                    fontSize: 8.1,
                     color: Colors.black87,
                     fontStyle: FontStyle.italic,
                   ),
@@ -75,7 +80,8 @@ class WelcomeScreenMobile extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 64.0),
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () => print("yet to be set"),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, SignUpScreen.id),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),

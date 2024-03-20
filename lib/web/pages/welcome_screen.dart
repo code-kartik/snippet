@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreenWeb extends StatefulWidget {
-  const WelcomeScreenWeb({Key? key}) : super(key: key);
+  const WelcomeScreenWeb({super.key});
+
+  static String id = "WelcomeScreenWeb";
 
   @override
   State<WelcomeScreenWeb> createState() => _WelcomeScreenWebState();
@@ -63,7 +65,7 @@ class _WelcomeScreenWebState extends State<WelcomeScreenWeb>
                   ),
                 ),
                 Text(
-                  "Develop, Share, Connect and much more",
+                  "Develop, Share, Connect, Collaborate and much more",
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     color: Colors.black87,
@@ -77,6 +79,7 @@ class _WelcomeScreenWebState extends State<WelcomeScreenWeb>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 768.0),
                   width: double.maxFinite,
+                  height: 40,
                   child: MouseRegion(
                     onEnter: (_) {
                       setState(() {
@@ -101,7 +104,7 @@ class _WelcomeScreenWebState extends State<WelcomeScreenWeb>
                                     ? Colors.white.withOpacity(0.7)
                                     : animation1.value),
                             elevation: MaterialStateProperty.all(
-                                isHoveringButton1 ? 15 : 0),
+                                isHoveringButton1 ? 15 : 5),
                           ),
                           child: Text(
                             "Log In",
@@ -122,6 +125,7 @@ class _WelcomeScreenWebState extends State<WelcomeScreenWeb>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 768.0),
                   width: double.maxFinite,
+                  height: 40,
                   child: MouseRegion(
                     onEnter: (_) {
                       setState(() {
@@ -146,7 +150,7 @@ class _WelcomeScreenWebState extends State<WelcomeScreenWeb>
                                     ? Colors.white.withOpacity(0.7)
                                     : animation2.value),
                             elevation: MaterialStateProperty.all(
-                                isHoveringButton2 ? 15 : 0),
+                                isHoveringButton2 ? 15 : 5),
                           ),
                           child: Text(
                             "Sign Up",

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88565517867",
+    "project_id": "snippet-2b962",
+    "storage_bucket": "snippet-2b962.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88565517867:android:96a7c341a046e27412646e",
+        "android_client_info": {
+          "package_name": "com.example.snippet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP5NqcAySP8z0m5ES40X_dEr8JDAg70O4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
