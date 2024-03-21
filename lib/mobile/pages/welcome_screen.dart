@@ -81,7 +81,7 @@ class WelcomeScreenMobile extends StatelessWidget {
                   width: double.maxFinite,
                   child: ElevatedButton(
                     onPressed: () =>
-                        Navigator.pushNamed(context, SignUpScreen.id),
+                        Navigator.pushNamed(context, SignUpScreenMobile.id),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),

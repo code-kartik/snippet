@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:snippet/mobile/pages/home_screen.dart';
+import 'package:snippet/services/auth_service.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignUpScreenMobile extends StatefulWidget {
+  const SignUpScreenMobile({super.key});
 
   static String id = "SignUpScreenMobile";
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUpScreenMobile> createState() => _SignUpScreenMobileState();
 }
 
-TextEditingController emailController = TextEditingController();
-TextEditingController passwdController = TextEditingController();
-TextEditingController nameController = TextEditingController();
-bool isObscure = true;
+// variables
+TextEditingController _emailController = TextEditingController();
+TextEditingController _passwdController = TextEditingController();
+TextEditingController _nameController = TextEditingController();
 
-class _SignUpScreenState extends State<SignUpScreen> {
+late String _name;
+late String _email;
+late String _passwd;
+
+bool _isObscure = true;
+
+class _SignUpScreenMobileState extends State<SignUpScreenMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                 child: TextField(
                   maxLength: 50,
-                  controller: nameController,
+                  controller: _nameController,
                   keyboardType: TextInputType.text,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.person),
@@ -80,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
                 child: TextField(
-                  controller: emailController,
+                  controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     hintStyle: TextStyle(color: Colors.black87),
@@ -99,8 +106,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
                 child: TextField(
-                  controller: passwdController,
-                  obscureText: isObscure,
+                  controller: _passwdController,
+                  obscureText: _isObscure,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.password_rounded),
@@ -108,10 +115,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
-                          isObscure = !isObscure;
+                          _isObscure = !_isObscure;
                         });
                       },
-                      icon: isObscure
+                      icon: _isObscure
                           ? const Icon(Icons.visibility)
                           : const Icon(Icons.visibility_off),
                     ),
@@ -134,9 +141,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.black)),
-                    onPressed: () => print("sign up"),
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    onPressed: () {
+                      _name = _nameController.text;
+                      _email = _emailController.text;
+                      _passwd = _passwdController.text;
+                      checkDetails(_name, _email, _passwd, context);
+                    },
                     child: Text(
                       "Next",
                       style: GoogleFonts.poppins(color: Colors.white),
@@ -150,4 +162,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+}
+
+void checkDetails(
+    String name, String email, String passwd, BuildContext context) {
+  if (name.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Name cannot be empty"),
+      ),
+    );
+  } else if (email.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Email cannot be empty"),
+      ),
+    );
+  }
+  if (passwd.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Password cannot be empty"),
+      ),
+    );
+  } else {
+    createUser(context);
+  }
+}
+
+void createUser(BuildContext context) {
+  AuthService().signUpWithEmail(_name, _email, _passwd);
+  Navigator.pushNamed(context, HomeScreenMobile.id);
 }

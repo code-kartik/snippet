@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:snippet/firebase_options.dart';
+import 'package:snippet/mobile/pages/home_screen.dart';
 import 'package:snippet/mobile/pages/sign_up_screen.dart';
 import 'package:snippet/mobile/pages/welcome_screen.dart';
 import 'package:snippet/web/pages/welcome_screen.dart';
@@ -32,9 +33,13 @@ class MainApp extends StatelessWidget {
       initialRoute: (kIsWeb) ? WelcomeScreenWeb.id : WelcomeScreenMobile.id,
       home: (kIsWeb) ? const WelcomeScreenWeb() : const WelcomeScreenMobile(),
       routes: {
-        WelcomeScreenWeb.id: (context) => const WelcomeScreenWeb(),
+        //routes for mobile
         WelcomeScreenMobile.id: (context) => const WelcomeScreenMobile(),
-        SignUpScreen.id: (context) => const SignUpScreen(),
+        SignUpScreenMobile.id: (context) => const SignUpScreenMobile(),
+        HomeScreenMobile.id: (context) => const HomeScreenMobile(),
+
+        //routes for website
+        WelcomeScreenWeb.id: (context) => const WelcomeScreenWeb(),
       },
     );
   }
