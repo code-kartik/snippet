@@ -1,14 +1,13 @@
 import 'dart:async';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:snippet/firebase_options.dart';
-import 'package:snippet/mobile/pages/home_screen.dart';
-import 'package:snippet/mobile/pages/sign_up_screen.dart';
-import 'package:snippet/mobile/pages/welcome_screen.dart';
-import 'package:snippet/web/pages/welcome_screen.dart';
+import 'package:Snippet/firebase_options.dart';
+import 'package:Snippet/mobile/pages/home_screen.dart';
+import 'package:Snippet/mobile/pages/sign_up_screen.dart';
+import 'package:Snippet/mobile/pages/welcome_screen.dart';
+import 'package:Snippet/web/pages/welcome_screen.dart';
 
 Future<void> main() async {
   runApp(const MainApp());
@@ -29,6 +28,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: (kIsWeb) ? WelcomeScreenWeb.id : WelcomeScreenMobile.id,
       initialRoute: (kIsWeb) ? WelcomeScreenWeb.id : WelcomeScreenMobile.id,
       home: (kIsWeb) ? const WelcomeScreenWeb() : const WelcomeScreenMobile(),
