@@ -1,3 +1,4 @@
+import 'package:Snippet/mobile/pages/log_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +79,8 @@ class WelcomeScreenMobile extends StatelessWidget {
                   width: double.maxFinite,
                   height: 40,
                   child: ElevatedButton(
-                    onPressed: () => print("Yet to set"),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, LogInScreen.id),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),

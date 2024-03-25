@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:Snippet/mobile/pages/create_snip.dart';
+import 'package:Snippet/mobile/pages/log_in_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,8 @@ class MainApp extends StatelessWidget {
         WelcomeScreenMobile.id: (context) => const WelcomeScreenMobile(),
         SignUpScreenMobile.id: (context) => const SignUpScreenMobile(),
         HomeScreenMobile.id: (context) => const HomeScreenMobile(),
+        LogInScreen.id: (context) => const LogInScreen(),
+        CreateSnipMobile.id: (context) => const CreateSnipMobile(),
 
         //routes for website
         WelcomeScreenWeb.id: (context) => const WelcomeScreenWeb(),

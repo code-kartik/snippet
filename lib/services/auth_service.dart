@@ -69,4 +69,17 @@ class AuthService {
       }
     }
   }
+
+  Future<void> signUserInWithEmailPasswd(
+      String email, String passwd, BuildContext context) async {
+    await _auth.signInWithEmailAndPassword(email: email, password: passwd);
+  }
+
+  Future<void> signUserOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      print("Cannot logout: $e");
+    }
+  }
 }
